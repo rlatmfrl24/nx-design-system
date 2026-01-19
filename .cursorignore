@@ -1,0 +1,8 @@
+node_modules/
+.next/
+storybook-static/
+pnpm-lock.yaml
+coverage/
+.git/
+playwright-report/
+test-results/

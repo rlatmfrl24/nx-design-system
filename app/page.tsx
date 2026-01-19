@@ -5,9 +5,9 @@ import { Box } from "@mui/material";
 
 export default function Home() {
   return (
-    <div>
+    <div className="p-10">
       <Box>
-        <Button label="Button" />
+        <Button variant="contained" color="primary">Button</Button>
       </Box>
     </div>
   );

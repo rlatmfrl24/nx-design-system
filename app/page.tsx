@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "../stories/button.component";
+import { Button } from "./components/button.component";
 import { Box } from "@mui/material";
 
 export default function Home() {

@@ -1,25 +1,22 @@
 # Project Context
 This is a Design System project named "My Design System".
-- **Framework**: Next.js 14+ (App Router)
-- **Language**: TypeScript (Strict mode)
-- **Package Manager**: pnpm
-- **UI Library**: MUI (Material UI) v5/v6 with Emotion
-- **Documentation**: Storybook v8+
-- **Testing**: Playwright (Visual Regression & E2E)
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Package Manager**: npm (package-lock.json)
+- **UI Library**: MUI (Material UI) v7 with Emotion
+- **Documentation**: Storybook v10 (nextjs-vite)
+- **Testing**: Playwright + Vitest
 - **Design Source**: Figma (Data provided via MCP or JSON)
 
 # Code Style & Conventions
 
 ## 1. Component Structure
 - All components must be functional components using named exports.
-- Directory structure: `src/components/[ComponentName]/[ComponentName].tsx`
-- Co-location: Keep component, stories, and tests in the same folder.
-  - `[ComponentName].tsx`
-  - `[ComponentName].stories.tsx`
-  - `[ComponentName].spec.ts` (if applicable)
+- Component files live in `app/components` with the pattern `[name].component.tsx`.
+- Stories live in `stories` with the pattern `[name].stories.tsx` (or `.stories.ts`).
 
 ## 2. MUI & Styling
-- Use `styled()` from `@mui/material/styles` for creating reusable styled components.
+- Use `styled()` from `@mui/material/styles` for reusable styled components.
 - Avoid inline `sx` prop for complex styles; use `styled` components to keep JSX clean.
 - ALWAYS use theme tokens (e.g., `theme.palette.primary.main`, `theme.spacing(2)`) instead of hardcoded values (hex codes, pixels).
 - When converting Figma data:
@@ -28,23 +25,22 @@ This is a Design System project named "My Design System".
   - Map Figma "Text" -> `Typography`.
 
 ## 3. Storybook
-- Every new component MUST have a corresponding `.stories.tsx` file.
-- Use TypeScript for Storybook configuration (`Meta`, `StoryObj`).
-- Wrap stories with `ThemeProvider` if necessary (though it should be global in preview.tsx).
+- Every new component MUST have a corresponding `.stories.tsx` (or `.stories.ts`) file in `stories`.
+- Use TypeScript for Storybook configuration (`Meta`, `StoryObj`) from `@storybook/nextjs-vite`.
 - Define `argTypes` explicitly for key props.
 
-## 4. Playwright Testing
+## 4. Testing (Playwright + Vitest)
 - Prioritize testing for accessibility (A11y) and visual regression.
 - Use `page.goto` to visit specific Storybook iframe URLs for visual testing.
-  - URL Pattern: `/iframe.html?id=[component-id]&viewMode=story`
+- URL Pattern: `/iframe.html?id=[component-id]&viewMode=story`
 - Use `expect(page).toHaveScreenshot()` for visual comparisons.
 
 ## 5. TypeScript
-- Use `interface` for props definitions usually named `[ComponentName]Props`.
+- Use `interface` for props definitions usually named `[Component Name]Props`.
 - Avoid `any`; use `unknown` if type is truly ambiguous, but prefer specific types.
 
 # Workflow Instructions for AI
 
 - **Generating from Figma**: When I provide Figma JSON or MCP data, analyze the structure first. Identify layouts (Row/Column), Padding, and Colors. Then match them to MUI Components.
-- **Next.js Integration**: Ensure all UI components are marked with `'use client'` if they use hooks or event handlers, as this is a Design System mostly running on client-side interactions.
-- **Dependencies**: Always suggest `pnpm add` or `pnpm install` commands.
+- **Next.js Integration**: Add `'use client'` only when components use hooks, state, refs, or event handlers that require client components.
+- **Dependencies**: Use `pnpm install` for new dependencies. Prefer `pnpm install <pkg>` or `pnpm install -D <pkg>`.

@@ -79,6 +79,17 @@ const theme = createTheme({
         }
       }
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginTop: 2,
+          marginLeft: 3,
+          fontSize: '12px',
+          fontWeight: 400,
+          lineHeight: '16px',
+        }
+      }
+    },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
@@ -87,7 +98,15 @@ const theme = createTheme({
           lineHeight: '14px',
         }
       }
-    }
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          padding: 3,
+        }
+      }
+    },
+
   },
   typography: {
     fontFamily: 'var(--font-roboto)',

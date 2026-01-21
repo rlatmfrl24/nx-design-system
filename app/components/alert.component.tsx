@@ -4,9 +4,8 @@
 
 import type React from 'react';
 import MuiAlert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Button } from './button.component';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -14,6 +13,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
+import theme from '../theme';
+import Typography from '@mui/material/Typography';
 
 type AlertType = 'singleButton' | 'doubleButton' | 'typing' | 'radioButton';
 
@@ -30,7 +31,6 @@ export interface AlertProps {
     secondaryActionLabel?: string;
     onPrimaryAction?: () => void;
     onSecondaryAction?: () => void;
-    textFieldLabel?: string;
     textFieldValue?: string;
     textFieldError?: boolean;
     textFieldHelperText?: string;
@@ -41,12 +41,13 @@ export interface AlertProps {
 }
 
 const StyledAlert = styled(MuiAlert)(({ theme }) => ({
+    maxWidth: 384,
     alignItems: 'stretch',
     borderColor: theme.palette.divider,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: 16,
     backgroundColor: theme.palette.common.white,
     boxShadow: theme.shadows[1],
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
     '& .MuiAlert-message': {
         width: '100%',
         padding: 0,
@@ -70,7 +71,6 @@ export const Alert = ({
     secondaryActionLabel = 'Cancel',
     onPrimaryAction,
     onSecondaryAction,
-    textFieldLabel = 'Label',
     textFieldValue,
     textFieldError = false,
     textFieldHelperText = 'Helper text',
@@ -97,16 +97,12 @@ export const Alert = ({
 
     return (
         <StyledAlert icon={false} severity="info" variant="outlined">
-            <Stack gap={2}>
-                <Box>
-                    {title && <AlertTitle>{title}</AlertTitle>}
-                    {description}
-                </Box>
-
+            <Stack gap={1} padding={3}>
+                {title && <Typography variant='subtitle1' color='text.primary'>{title}</Typography>}
+                {description && <Typography variant='body2' color='blueGrey.400'>{description}</Typography>}
                 {type === 'typing' && (
                     <TextField
                         size="small"
-                        label={textFieldLabel}
                         error={textFieldError}
                         helperText={textFieldError ? textFieldHelperText : undefined}
                         value={textFieldValue}
@@ -120,6 +116,9 @@ export const Alert = ({
                             value={radioValue}
                             defaultValue={resolvedRadioOptions[0]?.value}
                             onChange={onRadioChange ? handleRadioChange : undefined}
+                            sx={{
+                                gap: 1,
+                            }}
                         >
                             {resolvedRadioOptions.map((option) => (
                                 <FormControlLabel
@@ -127,22 +126,31 @@ export const Alert = ({
                                     value={option.value}
                                     control={<Radio />}
                                     label={option.label}
+                                    sx={{
+                                        margin: 0,
+                                        '& .MuiFormControlLabel-label': {
+                                            fontSize: '14px',
+                                            fontWeight: 400,
+                                            lineHeight: '20px',
+                                            letterSpacing: '0.14px',
+                                            color: 'text.primary',
+                                        },
+                                    }}
                                 />
                             ))}
                         </RadioGroup>
                     </FormControl>
                 )}
+
             </Stack>
 
-            <ActionsRow>
+            <ActionsRow sx={{ paddingX: theme.spacing(3), paddingY: theme.spacing(2), marginTop: theme.spacing(0) }}>
                 {showSecondaryAction && (
-                    <Button variant="outlined" size="small" onClick={onSecondaryAction}>
-                        {secondaryActionLabel}
-                    </Button>
+                    <Button label={secondaryActionLabel} variant="outlined" color="primary" onClick={onSecondaryAction} />
                 )}
-                <Button variant="contained" size="small" onClick={onPrimaryAction}>
-                    {primaryActionLabel}
-                </Button>
+                <Button label={primaryActionLabel} variant={
+                    type === 'singleButton' ? 'outlined' : 'contained'
+                } color="primary" onClick={onPrimaryAction} />
             </ActionsRow>
         </StyledAlert>
     );

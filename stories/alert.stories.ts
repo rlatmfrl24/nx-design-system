@@ -16,7 +16,6 @@ const meta = {
     description: { control: 'text' },
     primaryActionLabel: { control: 'text' },
     secondaryActionLabel: { control: 'text' },
-    textFieldLabel: { control: 'text' },
     textFieldError: { control: 'boolean' },
     textFieldHelperText: { control: 'text' },
     radioOptions: { control: 'object' },
@@ -29,6 +28,7 @@ const meta = {
         'onSecondaryAction',
         'onTextFieldChange',
         'onRadioChange',
+        'textFieldLabel' 
       ],
     },
   },
@@ -61,7 +61,6 @@ export const Typing: Story = {
     type: 'typing',
     title: 'Enter label',
     description: 'Please enter a label value below.',
-    textFieldLabel: 'Label',
     primaryActionLabel: 'Save',
     secondaryActionLabel: 'Cancel',
   },

@@ -8,6 +8,7 @@ const meta = {
   component: Alert,
   tags: ['autodocs'],
   argTypes: {
+    open: { control: 'boolean' },
     type: {
       control: 'select',
       options: ['singleButton', 'doubleButton', 'typing', 'radioButton'],
@@ -26,9 +27,10 @@ const meta = {
         'component',
         'onPrimaryAction',
         'onSecondaryAction',
+        'onClose',
         'onTextFieldChange',
         'onRadioChange',
-        'textFieldLabel' 
+        'textFieldLabel',
       ],
     },
   },
@@ -39,6 +41,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SingleButton: Story = {
   args: {
+    open: true,
     type: 'singleButton',
     title: 'Information',
     description: 'This is a single-button alert.',
@@ -48,6 +51,7 @@ export const SingleButton: Story = {
 
 export const DoubleButton: Story = {
   args: {
+    open: true,
     type: 'doubleButton',
     title: 'Confirm action',
     description: 'Are you sure you want to proceed?',
@@ -58,6 +62,7 @@ export const DoubleButton: Story = {
 
 export const Typing: Story = {
   args: {
+    open: true,
     type: 'typing',
     title: 'Enter label',
     description: 'Please enter a label value below.',
@@ -68,6 +73,7 @@ export const Typing: Story = {
 
 export const RadioButton: Story = {
   args: {
+    open: true,
     type: 'radioButton',
     title: 'File upload',
     description:

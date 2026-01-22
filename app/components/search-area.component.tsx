@@ -16,7 +16,7 @@ const Root = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
   padding: `${theme.spacing(3)}`,
   paddingTop: `${theme.spacing(2)}`,
-  borderRadius: theme.spacing(1.5),
+  borderRadius: theme.spacing(1),
   border: `1px solid ${theme.palette.divider}`,
 }));
 

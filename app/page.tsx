@@ -29,19 +29,7 @@ const PageRoot = styled(Box)(({ theme }) => ({
   flexDirection: "column",
 }));
 
-const PageHeader = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-}));
 
-const PageBody = styled(Box)(({ theme }) => ({
-  flex: 1,
-  overflow: "auto",
-  padding: theme.spacing(2),
-  display: "flex",
-  flexDirection: "column",
-  gap: theme.spacing(3),
-}));
 
 const SectionsGrid = styled(Box)(({ theme }) => ({
   display: "grid",
@@ -84,6 +72,28 @@ const defaultAlertOptions = [
   { label: "Typing", type: "typing" },
   { label: "Radio Button", type: "radioButton" },
 ] as const;
+
+const PageBody = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box
+      display="flex"
+      flex={1}
+      overflow="auto"
+      p={2}
+      sx={{
+        backgroundColor: 'blueGrey.100',
+      }}>
+      <Box display="flex" flex={1} flexDirection="column" borderRadius={2} sx={{
+        backgroundColor: 'white',
+      }}>
+        <Box display="flex" p={1.5} borderBottom={1} borderColor="divider">11</Box>
+        <Box display="flex" flexDirection="column" flex={1} p={1.5} gap={1}>
+          {children}
+        </Box>
+      </Box>
+    </Box>
+  );
+}
 
 export default function Home() {
   const [activeAlert, setActiveAlert] = useState<AlertVariant | null>(null);
@@ -131,11 +141,7 @@ export default function Home() {
 
   return (
     <PageRoot>
-
-      <PageHeader>
-        <Header />
-      </PageHeader>
-
+      <Header />
       <PageBody>
         <SearchArea>
           <TextField

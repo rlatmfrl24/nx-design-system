@@ -22,7 +22,6 @@ import {
   TextWithLabel,
 } from "./components/text-field.component";
 import { Header } from "./header";
-import theme from "./theme";
 
 type AlertVariant = "singleButton" | "doubleButton" | "typing" | "radioButton";
 type DialogScenario = "basic" | "form";
@@ -91,7 +90,7 @@ const PageBody = ({ children }: { children: React.ReactNode }) => {
       <Box display="flex" flex={1} border={1} borderColor="divider" flexDirection="column" borderRadius={2} sx={{
         backgroundColor: 'white',
       }}>
-        <Box display="flex" p={1.5} borderBottom={1} borderColor="divider">11</Box>
+        <Box display="flex" p={1.5} borderBottom={1} borderColor="divider">Breadcrumb</Box>
         <Box display="flex" flexDirection="column" flex={1} p={1.5} gap={1}>
           {children}
         </Box>

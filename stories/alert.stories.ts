@@ -6,7 +6,6 @@ import { Alert } from '../app/components/alert.component';
 const meta = {
   title: 'Alert/Variants',
   component: Alert,
-  tags: ['autodocs'],
   argTypes: {
     open: { control: 'boolean' },
     type: {

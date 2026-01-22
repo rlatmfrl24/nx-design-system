@@ -2,12 +2,15 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
-import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { SearchArea } from '../app/components/search-area.component';
+import {
+  SelectWithLabel,
+  TextWithLabel,
+} from '../app/components/text-field.component';
 
 const meta = {
-  title: 'SearchArea',
+  title: 'SearchArea/Variants',
   component: SearchArea,
   tags: ['autodocs'],
   argTypes: {
@@ -28,7 +31,11 @@ const Fields = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
 
-const Field = styled(TextField)(({ theme }) => ({
+const TextFieldItem = styled(TextWithLabel)(({ theme }) => ({
+  minWidth: theme.spacing(28),
+}));
+
+const SelectFieldItem = styled(SelectWithLabel)(({ theme }) => ({
   minWidth: theme.spacing(28),
 }));
 
@@ -40,10 +47,9 @@ export const Default: Story = {
     return (
       <Box sx={{ width: '100%' }}>
         <SearchArea>
-          <Field
+          <TextFieldItem
             label="Search"
-            size="small"
-            placeholder="Please enter your search term"
+            textFieldProps={{ placeholder: 'Please enter your search term' }}
           />
         </SearchArea>
       </Box>
@@ -65,18 +71,21 @@ export const ManyFields: Story = {
         <SearchArea>
           <Fields>
             {filterLabels.map((label, index) => (
-              <Field key={`${label}-${index}`} label={label} select size="small" defaultValue={optionValue}>
+              <SelectFieldItem
+                key={`${label}-${index}`}
+                label={label}
+                textFieldProps={{ defaultValue: optionValue }}
+              >
                 {filterOptions.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
                   </MenuItem>
                 ))}
-              </Field>
+              </SelectFieldItem>
             ))}
-            <Field
+            <TextFieldItem
               label="Search"
-              size="small"
-              placeholder="Please enter your search term"
+              textFieldProps={{ placeholder: 'Please enter your search term' }}
             />
           </Fields>
         </SearchArea>

@@ -17,7 +17,12 @@ import { Button } from "./components/button.component";
 import { Dialog } from "./components/diaolg.component";
 import { Footer } from "./components/footer.component";
 import { SearchArea } from "./components/search-area.component";
+import {
+  SelectWithLabel,
+  TextWithLabel,
+} from "./components/text-field.component";
 import { Header } from "./header";
+import theme from "./theme";
 
 type AlertVariant = "singleButton" | "doubleButton" | "typing" | "radioButton";
 type DialogScenario = "basic" | "form";
@@ -81,9 +86,9 @@ const PageBody = ({ children }: { children: React.ReactNode }) => {
       overflow="auto"
       p={2}
       sx={{
-        backgroundColor: 'blueGrey.100',
+        backgroundColor: '#DDE4EA',
       }}>
-      <Box display="flex" flex={1} flexDirection="column" borderRadius={2} sx={{
+      <Box display="flex" flex={1} border={1} borderColor="divider" flexDirection="column" borderRadius={2} sx={{
         backgroundColor: 'white',
       }}>
         <Box display="flex" p={1.5} borderBottom={1} borderColor="divider">11</Box>
@@ -144,22 +149,37 @@ export default function Home() {
       <Header />
       <PageBody>
         <SearchArea>
-          <TextField
+          <SelectWithLabel
             label="Status"
-            size="small"
-            select
-            value={searchStatus}
-            onChange={handleStatusChange}
+            textFieldProps={{
+              value: searchStatus,
+              onChange: handleStatusChange,
+            }}
           >
             <MenuItem value="all">All</MenuItem>
             <MenuItem value="active">Active</MenuItem>
             <MenuItem value="inactive">Inactive</MenuItem>
-          </TextField>
-          <TextField label="Keyword" size="small" sx={{ minWidth: '100px' }} />
-          <TextField label="Keyword" size="small" sx={{ minWidth: '100px' }} />
-          <TextField label="Keyword" size="small" sx={{ minWidth: '100px' }} />
-          <TextField label="Keyword" size="small" sx={{ minWidth: '100px' }} />
-          <TextField label="Keyword" size="small" sx={{ minWidth: '100px' }} />
+          </SelectWithLabel>
+          <TextWithLabel
+            label="Keyword"
+            textFieldProps={{ sx: { minWidth: '100px' } }}
+          />
+          <TextWithLabel
+            label="Keyword"
+            textFieldProps={{ sx: { minWidth: '100px' } }}
+          />
+          <TextWithLabel
+            label="Keyword"
+            textFieldProps={{ sx: { minWidth: '100px' } }}
+          />
+          <TextWithLabel
+            label="Keyword"
+            textFieldProps={{ sx: { minWidth: '100px' } }}
+          />
+          <TextWithLabel
+            label="Keyword"
+            textFieldProps={{ sx: { minWidth: '100px' } }}
+          />
         </SearchArea>
 
         <SectionsGrid>

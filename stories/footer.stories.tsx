@@ -7,7 +7,7 @@ import { Footer } from '../app/components/footer.component';
 import { Button } from '../app/components/button.component';
 
 const meta = {
-  title: 'Footer',
+  title: 'Footer/Variants',
   component: Footer,
   tags: ['autodocs'],
   parameters: {

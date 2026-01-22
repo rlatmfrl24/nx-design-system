@@ -37,6 +37,7 @@ export interface AlertProps {
     textFieldValue?: string;
     textFieldError?: boolean;
     textFieldHelperText?: string;
+    textFieldPlaceholder?: string;
     onTextFieldChange?: (value: string) => void;
     radioOptions?: RadioOption[];
     radioValue?: string;
@@ -58,6 +59,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 
 const DialogHeader = styled(DialogTitle)(({ theme }) => ({
     padding: `${theme.spacing(3)} ${theme.spacing(3)} ${theme.spacing(1)}`,
+    ...theme.typography.subtitle1,
 }));
 
 const DialogBody = styled(DialogContent)(({ theme }) => ({
@@ -74,6 +76,7 @@ const ActionsRow = styled(DialogActions)(({ theme }) => ({
 
 const DescriptionText = styled(Typography)(({ theme }) => ({
     color: theme.palette.text.secondary,
+    ...theme.typography.body2,
 }));
 
 const StyledRadioGroup = styled(RadioGroup)(({ theme }) => ({
@@ -104,6 +107,7 @@ export const Alert = ({
     textFieldValue,
     textFieldError = false,
     textFieldHelperText = 'Helper text',
+    textFieldPlaceholder = '',
     onTextFieldChange,
     radioOptions,
     radioValue,
@@ -143,6 +147,7 @@ export const Alert = ({
                             helperText={textFieldError ? textFieldHelperText : undefined}
                             value={textFieldValue}
                             onChange={onTextFieldChange ? handleTextFieldChange : undefined}
+                            placeholder={textFieldPlaceholder}
                         />
                     )}
 

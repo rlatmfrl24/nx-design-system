@@ -91,7 +91,7 @@ const defaultAlertOptions = [
 export default function Home() {
   const [activeAlert, setActiveAlert] = useState<AlertVariant | null>(null);
   const [activeDialog, setActiveDialog] = useState<DialogScenario | null>(null);
-  const [alertText, setAlertText] = useState("Sample input");
+  const [alertText, setAlertText] = useState("");
   const [alertRadio, setAlertRadio] = useState("option-1");
   const [searchStatus, setSearchStatus] = useState("all");
 
@@ -245,6 +245,8 @@ export default function Home() {
           description="설명 텍스트가 여기에 표시됩니다."
           primaryActionLabel="확인"
           secondaryActionLabel="취소"
+          textFieldHelperText="Helper text"
+          textFieldPlaceholder="Sample input"
           onPrimaryAction={handleAlertClose}
           onSecondaryAction={handleAlertClose}
           onClose={handleAlertClose}

@@ -41,6 +41,6 @@ This is a Design System project named "My Design System".
 
 # Workflow Instructions for AI
 
-- **Generating from Figma**: When I provide Figma JSON or MCP data, analyze the structure first. Identify layouts (Row/Column), Padding, and Colors. Then match them to MUI Components.
+- **Generating from Figma**: When I provide Figma JSON or MCP data(Do not use chrome-devtools to analyze the structure), analyze the structure first. Identify layouts (Row/Column), Padding, and Colors. Then match them to MUI Components.
 - **Next.js Integration**: Add `'use client'` only when components use hooks, state, refs, or event handlers that require client components.
 - **Dependencies**: Use `pnpm install` for new dependencies. Prefer `pnpm install <pkg>` or `pnpm install -D <pkg>`.

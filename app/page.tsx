@@ -17,6 +17,7 @@ import { Button } from "./components/button.component";
 import { Dialog } from "./components/diaolg.component";
 import { Footer } from "./components/footer.component";
 import { SearchArea } from "./components/search-area.component";
+import { Header } from "./header";
 
 type AlertVariant = "singleButton" | "doubleButton" | "typing" | "radioButton";
 type DialogScenario = "basic" | "form";
@@ -31,10 +32,6 @@ const PageRoot = styled(Box)(({ theme }) => ({
 const PageHeader = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(1),
-  padding: theme.spacing(2),
-  borderBottom: `1px solid ${theme.palette.divider}`,
-  backgroundColor: theme.palette.background.default,
 }));
 
 const PageBody = styled(Box)(({ theme }) => ({
@@ -136,9 +133,7 @@ export default function Home() {
     <PageRoot>
 
       <PageHeader>
-        <Typography variant="h4" color="text.primary">
-          Components Overview
-        </Typography>
+        <Header />
       </PageHeader>
 
       <PageBody>

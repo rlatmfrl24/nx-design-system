@@ -67,7 +67,6 @@ const DialogBody = styled(DialogContent)(({ theme }) => ({
 const ActionsRow = styled(DialogActions)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'flex-end',
-    gap: theme.spacing(1),
     borderTop: `1px solid ${theme.palette.divider}`,
     padding: theme.spacing(2, 3),
     margin: 0,
@@ -170,12 +169,12 @@ export const Alert = ({
 
             <ActionsRow>
                 {showSecondaryAction && (
-                    <Button label={secondaryActionLabel} variant="outlined" color="primary" onClick={onSecondaryAction} />
+                    <Button label={secondaryActionLabel} variant="outlined" color="inherit" onClick={onSecondaryAction} />
                 )}
                 <Button
                     label={primaryActionLabel}
                     variant={type === 'singleButton' ? 'outlined' : 'contained'}
-                    color="primary"
+                    color={type === 'singleButton' ? 'inherit' : 'primary'}
                     onClick={onPrimaryAction}
                 />
             </ActionsRow>

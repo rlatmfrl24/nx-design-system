@@ -175,6 +175,7 @@ export default function Home() {
               <Button label="Outlined" variant="outlined" color="primary" />
               <Button label="Text" variant="text" color="primary" />
               <Button label="Disabled" variant="contained" disabled />
+              <Button label="Inherit" color="inherit" variant="outlined" />
             </ButtonRow>
           </SectionCard>
 

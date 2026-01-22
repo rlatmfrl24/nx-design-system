@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import { SearchArea } from '../app/components/search-area.component';
-import { Button } from '../app/components/button.component';
 
 const meta = {
   title: 'SearchArea',
@@ -40,10 +37,6 @@ export const Default: Story = {
     children: null,
   },
   render: () => {
-    const filterLabels = ['Label', 'Label', 'Label'];
-    const filterOptions = ['All'];
-    const optionValue = filterOptions[0] ?? '';
-
     return (
       <Box sx={{ width: '100%' }}>
         <SearchArea>

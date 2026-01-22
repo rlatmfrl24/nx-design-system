@@ -1,6 +1,5 @@
 'use client';
 
-import ButtonBase from '@mui/material/ButtonBase';
 import MuiDialog from '@mui/material/Dialog';
 import MuiDialogActions from '@mui/material/DialogActions';
 import MuiDialogContent from '@mui/material/DialogContent';
@@ -9,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { styled, type Theme } from '@mui/material/styles';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
+import { Button } from './button.component';
 
 export interface DialogProps {
   open?: boolean;
@@ -61,21 +61,6 @@ const StyledDialogActions = styled(MuiDialogActions)(({ theme }) => ({
   margin: 0,
 }));
 
-const CloseButton = styled(ButtonBase)(({ theme }) => ({
-  border: `1px solid ${theme.palette.text.primary}`,
-  borderRadius: theme.spacing(0.75),
-  padding: `${theme.spacing(0.5)} ${theme.spacing(1.5)}`,
-}));
-
-const CloseButtonText = styled('span')(({ theme }) => ({
-  fontSize: theme.typography.pxToRem(13),
-  fontWeight: 500,
-  lineHeight: theme.typography.pxToRem(22),
-  letterSpacing: '0.46px',
-  textTransform: 'uppercase',
-  color: theme.palette.text.primary,
-}));
-
 const defaultContent = (
   <Typography variant="body2" color="text.secondary">
     You can place any UI content here.
@@ -121,9 +106,7 @@ export const Dialog = ({
       <StyledDialogContent>{resolvedContent}</StyledDialogContent>
       {actionLabel && (
         <StyledDialogActions>
-          <CloseButton onClick={onActionClick ?? handleClose}>
-            <CloseButtonText>{actionLabel}</CloseButtonText>
-          </CloseButton>
+          <Button label={actionLabel} variant="outlined" color="inherit" onClick={onActionClick} />
         </StyledDialogActions>
       )}
     </StyledDialog>
